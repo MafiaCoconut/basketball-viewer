@@ -35,9 +35,13 @@ class Parser:
     def start_parser(self):
         function_name = 'start_parser'
         set_func(function_name, tag)
-
+        print(0)
         self.driver = get_selenium_driver()
+        print(1)
         self.driver.get("https://ticket-resale.paris2024.org/tickets/all/1/1/18172109")
+
+        print(self.driver.current_url)
+
         self.ddos_flag = False
         self.captcha_count = 0
 
@@ -56,8 +60,8 @@ class Parser:
 
 
 
-        button.click()
-        time.sleep(self.waiting_time)
+        # button.click()
+        # time.sleep(self.waiting_time)
 
         self.driver.close()
 

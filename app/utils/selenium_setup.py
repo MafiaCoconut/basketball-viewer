@@ -8,9 +8,9 @@ from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
 
 def get_selenium_driver():
-    profile_path = '/home/mafiacoconut/.mozilla/firefox/7dbykki7.default'
+    profile_path = '/home/mafiacoconut/.mozilla/firefox/mshugs1l.default-release'
     FF_OPTIONS = [
-        # '--headless',
+        '--headless',
         '--no-sandbox',
         '--accept-cookies',
         '--disable-xss-auditor',
@@ -33,7 +33,7 @@ def get_selenium_driver():
 
     if os.getenv("DEVICE") == "Ubuntu" or os.getenv("DEVICE") == "Laptop":
         options.binary_location = "/usr/bin/firefox"
-
+        print('ноут')
         current_directory = os.path.dirname(os.path.realpath(__file__))
         current_directory = current_directory[:current_directory.rfind('/')]
         # print(f"current_directory: {current_directory}")
@@ -41,6 +41,7 @@ def get_selenium_driver():
         # ic(f"geckodriver path: {geckodriver_path}")
     # elif os.getenv("DEVICE") == "RaspberryTest":
     elif os.getenv("DEVICE") == "Raspberry" or os.getenv("DEVICE") == "RaspberryTest":
+        print('сервер')
         geckodriver_path = "/app/geckodriver"
     else:
         raise Exception("Неправильный ENV DEVICE")
