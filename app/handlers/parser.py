@@ -16,11 +16,11 @@ import time
 # import easyocr
 import requests
 
-from bs4 import BeautifulSoup
+# from bs4 import BeautifulSoup
 from app.handlers import config
 from app.utils.logs import set_func
 # from app.utils.selenium_setup import get_selenium_driver
-from lxml import etree
+# from lxml import etree
 
 tag = 'parser'
 
