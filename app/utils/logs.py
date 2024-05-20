@@ -82,6 +82,10 @@ def logs_settings():
         )
         system_logger.setLevel(logging.DEBUG)
     else:
+
+        global error_logger
+        error_logger.setLevel(logging.ERROR)
+        error_logger.addHandler(error_handler)
         system_logger.setLevel(logging.INFO)
     system_logger.addHandler(system_handler)
 
@@ -97,9 +101,6 @@ def logs_settings():
     user_logger.setLevel(logging.DEBUG)
     user_logger.addHandler(user_handler)
 
-    global error_logger
-    error_logger.setLevel(logging.ERROR)
-    error_logger.addHandler(error_handler)
 
-    from utils.registration_dispatcher import dp
-    dp.errors.register(error_aio_handler)
+    # from utils.registration_dispatcher import dp
+    # dp.errors.register(error_aio_handler)

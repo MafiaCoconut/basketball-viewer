@@ -1,22 +1,19 @@
-FROM python:3.11
+FROM python:3.10
 
-ENV VIRTUAL_ENV "/venv"
-RUN python -m venv $VIRTUAL_ENV
-ENV PATH "$VIRTUAL_ENV/bin:$PATH"
+ENV TZ=Europe/Berlin
 
-WORKDIR /app
+RUN set +x \
+ && apt update \
+ && apt upgrade -y \
+ && apt install -y curl gcc build-essential \
+ && apt-get install -y firefox-esr
 
-COPY ../requirements.txt .
-
-RUN pip install --upgrade pip setuptools wheel
-RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/* \
-    build-essential \
-    cmake \
-    python3-dev \
-    libpq-dev \
-    gcc \
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY ../app .
+COPY /app /app
+WORKDIR /app
+
+RUN chmod +x geckodriver
 
 CMD ["python", "main.py"]
