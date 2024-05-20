@@ -45,6 +45,7 @@ class Parser:
         # self.open_page()
         try:
             button = self.driver.find_element(By.XPATH, '//*[@id="EventDetailsAndListingCard"]/div[4]/div[3]/div[3]')
+            button.click()
             self.save_screenshot("termins")
             return "Есть свободные записи"
         except:
